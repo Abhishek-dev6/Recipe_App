@@ -37,7 +37,7 @@ class _RecipelistState extends State<Recipelist> {
                   return Card(
                     child: ListTile(
                       leading: Image.network(recipe.image.toString(),height: 100,width: 100,),
-                      title: Text(recipe.name.toString()),onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=>screen(recipe: recipe,))),
+                      title: Text(recipe.name.toString()),onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen(recipe: recipe,))),
                     ),
                   );
                 },
