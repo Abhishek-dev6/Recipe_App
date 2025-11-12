@@ -10,10 +10,12 @@ class Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(recipe.name.toString())),
+      backgroundColor: Color(0XFFFFF8E1),
+      appBar: AppBar(title: Text(recipe.name.toString(),style: TextStyle(fontWeight: FontWeight.bold),),backgroundColor: Color(0XFFFFCC80),),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Card(
+          color: Color(0XFFFFF8E1),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -21,21 +23,20 @@ class Screen extends StatelessWidget {
               children: [
                 Center(
                   child: SizedBox(
-                    height:300,
+                    height: 300,
                     width: double.infinity,
                     child: Image.network(
                       recipe.image.toString(),
                       fit: BoxFit.cover,
-                  
                     ),
                   ),
                 ),
                 SizedBox(height: 30),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Name:    ${recipe.name.toString()}",
+                      "Name:   ${recipe.name.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
@@ -43,7 +44,7 @@ class Screen extends StatelessWidget {
                     ),
                     SizedBox(width: 100),
                     Text(
-                      "Ratings:${recipe.rating.toString()}",
+                      "Ratings:    ${recipe.rating.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
@@ -61,21 +62,38 @@ class Screen extends StatelessWidget {
                 ),
                 SizedBox(height: 30),
                 if (recipe.tags != null && recipe.tags!.isNotEmpty)
-                  Wrap(
-                    spacing: 8.0,
-                    runSpacing: 4.0,
+                  Row(
                     children: [
-                      ...recipe.tags!.map(
-                        (tag) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.cyan,
-                            ),
-                            child: Text(tag,style: TextStyle(fontWeight: FontWeight.w300,color: Colors.black),),
-                          ),
+                      Text(
+                        "Tags:",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
+                      ),
+                      Wrap(
+                        spacing: 8.0,
+                        runSpacing: 4.0,
+                        children: [
+                          ...recipe.tags!.map(
+                            (tag) => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.cyan,
+                                ),
+                                child: Text(
+                                  tag,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -83,32 +101,116 @@ class Screen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "servings: ${recipe.servings.toString()}",
+                      "Servings:  ",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      recipe.servings.toString(),
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
                       ),
                     ),
-                    SizedBox(width: 20),
-                    Text("Cusines:${recipe.cuisine.toString()}"),
+                    SizedBox(width: 40),
+                    Row(
+                      children: [
+                        Text(
+                          "Recipe:   ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          recipe.cuisine.toString(),
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
-                SizedBox(height: 30),
-                Text("calories:${recipe.caloriesPerServing.toString()}"),
                 SizedBox(height: 30),
                 Row(
                   children: [
                     Text(
-                      "Prepration Time:${recipe.prepTimeMinutes.toString()}",
+                      "Calories:   ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
-                    SizedBox(width: 30),
-                    Text("Cokking Time:${recipe.cookTimeMinutes.toString()}"),
+                    Text(
+                      recipe.caloriesPerServing.toString(),
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
                   ],
                 ),
                 SizedBox(height: 30),
-                Text("Ingredients Needed${recipe.ingredients.toString()}"),
+                Row(
+                  children: [
+                    Text(
+                      "Prepration Time:   ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(recipe.prepTimeMinutes.toString()),
+                    SizedBox(width: 30),
+                    Row(
+                      children: [
+                        Text(
+                          "Cooking Time:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(recipe.cookTimeMinutes.toString()),
+                      ],
+                    ),
+                  ],
+                ),
                 SizedBox(height: 30),
-                Text("Instructions:${recipe.instructions.toString()}"),
+                Row(
+                  children: [
+                    Text(
+                      "Ingredients Needed:   ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(recipe.ingredients?.join(",") ?? "N/A"),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Row(
+                  children: [
+                    Text(
+                      "Instructions:   ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...recipe.instructions!
+                            .map(
+                              (item) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text("$item"),
+                              ),
+                            )
+                            .toList(),
+                      ],
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
