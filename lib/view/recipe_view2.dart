@@ -20,10 +20,14 @@ class Screen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Image.network(
-                    recipe.image.toString(),
-                    height: 100,
-                    width: 100,
+                  child: SizedBox(
+                    height:300,
+                    width: double.infinity,
+                    child: Image.network(
+                      recipe.image.toString(),
+                      fit: BoxFit.cover,
+                  
+                    ),
                   ),
                 ),
                 SizedBox(height: 30),
@@ -38,7 +42,13 @@ class Screen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 100),
-                    Text("Ratings:${recipe.rating.toString()}",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
+                    Text(
+                      "Ratings:${recipe.rating.toString()}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
                     RatingBarIndicator(
                       rating: recipe.rating ?? 0,
                       itemBuilder:
@@ -50,7 +60,25 @@ class Screen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 30),
-                Text(recipe.tags.toString()),
+                if (recipe.tags != null && recipe.tags!.isNotEmpty)
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 4.0,
+                    children: [
+                      ...recipe.tags!.map(
+                        (tag) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.cyan,
+                            ),
+                            child: Text(tag,style: TextStyle(fontWeight: FontWeight.w300,color: Colors.black),),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 SizedBox(height: 30),
                 Row(
                   children: [
