@@ -15,17 +15,27 @@ class _RecipelistState extends State<Recipelist> {
   @override
   void initState() {
     super.initState();
-    Future.microtask((){
-    Provider.of<RecipeViewmodel>(context,listen: false).getrecipe();
+    Future.microtask(() {
+      Provider.of<RecipeViewmodel>(context, listen: false).getrecipe();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<RecipeViewmodel>(context);
     return Scaffold(
+      backgroundColor: Color(0xFFE8EAF6),
       appBar: AppBar(
-        title: Center(child: Text("Recipe App")),
-        backgroundColor: Colors.cyan,
+        title: Center(
+          child: Text(
+            "Recipe App",
+            style: TextStyle(
+              color: Color(0xFF1A237E),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        backgroundColor: Color(0xFF3F51B5),
       ),
       body:
           provider.isLoading
@@ -35,9 +45,23 @@ class _RecipelistState extends State<Recipelist> {
                 itemBuilder: (context, index) {
                   final recipe = provider.recipes[index];
                   return Card(
+                    elevation: 3,
+                    color: Colors.white,
+                    shadowColor: Colors.grey.shade300,
                     child: ListTile(
-                      leading: Image.network(recipe.image.toString(),height: 100,width: 100,),
-                      title: Text(recipe.name.toString()),onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen(recipe: recipe,))),
+                      leading: Image.network(
+                        recipe.image.toString(),
+                        height: 100,
+                        width: 100,
+                      ),
+                      title: Text(recipe.name.toString()),
+                      onTap:
+                          () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Screen(recipe: recipe),
+                            ),
+                          ),
                     ),
                   );
                 },
