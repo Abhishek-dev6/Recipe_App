@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 //import 'package:reciepe/model/recipe_model.dart';
 import 'package:reciepe/view/recipe_view2.dart';
@@ -28,11 +29,8 @@ class _RecipelistState extends State<Recipelist> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Recipe App",
-            style: TextStyle(
-              color: Color(0xFF1A237E),
-              fontWeight: FontWeight.bold,
-            ),
+            "Flavorly",
+            style:GoogleFonts.lobster(fontWeight: FontWeight.bold,color: Colors.white)
           ),
         ),
         backgroundColor: Color(0xFF3F51B5),
