@@ -15,7 +15,7 @@ class Screen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Card(
-          color: Color(0XFFFFF8E1),
+          color: Color(0xFFFFE0B2),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -32,37 +32,45 @@ class Screen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Name:   ${recipe.name.toString()}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                    SizedBox(width: 100),
-                    Text(
-                      "Ratings:    ${recipe.rating.toString()}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                    RatingBarIndicator(
-                      rating: recipe.rating ?? 0,
-                      itemBuilder:
-                          (context, index) =>
-                              Icon(Icons.star, color: Colors.amber),
-                      direction: Axis.horizontal,
-                      itemSize: 30,
+                    Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Name:   ${recipe.name.toString()}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11,
+                            color: Colors.red,
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "Ratings:    ${recipe.rating.toString()}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11,
+                            color: Colors.red,
+                          ),
+                        ),
+                        RatingBarIndicator(
+                          rating: recipe.rating ?? 0,
+                          itemBuilder:
+                              (context, index) =>
+                                  Icon(Icons.star, color: Colors.amber),
+                          direction: Axis.horizontal,
+                          itemSize: 15,
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 SizedBox(height: 30),
                 if (recipe.tags != null && recipe.tags!.isNotEmpty)
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Tags:",
@@ -175,7 +183,7 @@ class Screen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Ingredients Needed:   ",
+                      "Ingredients:   ",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -187,7 +195,8 @@ class Screen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 30),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Instructions:   ",
@@ -196,19 +205,14 @@ class Screen extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ...recipe.instructions!
-                            .map(
-                              (item) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text("$item"),
-                              ),
-                            )
-                            .toList(),
-                      ],
-                    ),
+                    ...recipe.instructions!
+                        .map(
+                          (item) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("$item"),
+                          ),
+                        )
+                        .toList(),
                   ],
                 ),
               ],

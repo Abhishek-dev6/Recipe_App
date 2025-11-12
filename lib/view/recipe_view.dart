@@ -45,9 +45,10 @@ class _RecipelistState extends State<Recipelist> {
                 itemBuilder: (context, index) {
                   final recipe = provider.recipes[index];
                   return Card(
+                    
                     elevation: 3,
-                    color: Colors.white,
-                    shadowColor: Colors.grey.shade300,
+                    color:Color(0XFFE0F7FA),
+                    shadowColor: Colors.tealAccent,
                     child: ListTile(
                       leading: Image.network(
                         recipe.image.toString(),
