@@ -44,16 +44,26 @@ class _RecipelistState extends State<Recipelist> {
                   final recipe = provider.recipes[index];
                   return Card(
                     
-                    elevation: 3,
+                    elevation: 5,
                     color:Color(0XFFE0F7FA),
                     shadowColor: Colors.tealAccent,
                     child: ListTile(
-                      leading: Image.network(
-                        recipe.image.toString(),
-                        height: 100,
-                        width: 100,
+                      leading: SizedBox(
+                        child: Image.network(
+                          recipe.image.toString(),
+                          height: 50,
+                          width: 100,
+                        ),
                       ),
                       title: Text(recipe.name.toString()),
+                      subtitle: Row(
+                        children: [
+                          Text(recipe.cuisine.toString()),
+                          SizedBox(width: 20),
+                          Text(recipe.rating.toString(),),Icon(Icons.star,color: Colors.amberAccent,)
+                        ],
+                      ),
+                      
                       onTap:
                           () => Navigator.push(
                             context,
