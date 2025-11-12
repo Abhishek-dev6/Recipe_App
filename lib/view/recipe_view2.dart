@@ -39,16 +39,16 @@ class Screen extends StatelessWidget {
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Name:   ${recipe.name.toString()}",
+                          "Name: ${recipe.name.toString()}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 11,
+                            fontSize: 10,
                             color: Colors.red,
                           ),
                         ),
                         SizedBox(height: 5),
                         Text(
-                          "Ratings:    ${recipe.rating.toString()}",
+                          "Ratings:  ${recipe.rating.toString()}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 11,
