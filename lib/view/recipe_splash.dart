@@ -13,25 +13,32 @@ class recipesplash extends StatefulWidget {
 
 class _recipesplashState extends State<recipesplash> {
   @override
-void initState(){
-  super.initState();
-  Timer(Duration(seconds: 2), (){
-    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) =>Recipelist()),);
-  });
-}
-
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Recipelist()),
+      );
+    });
+  }
 
   @override
-  
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/Recipe.png",height: 200,width: 200,),
+            Image.asset("assets/Recipe.png", height: 200, width: 200),
             SizedBox(height: 10),
-            Text("Flavorly",style: GoogleFonts.lobster(fontWeight: FontWeight.bold,fontSize: 30))
+            Text(
+              "Flavorly",
+              style: GoogleFonts.lobster(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
           ],
         ),
       ),
