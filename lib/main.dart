@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:reciepe/view/recipe_splash.dart';
 import 'package:reciepe/view/recipe_view.dart';
 import 'package:reciepe/viewmodel/recipe_viewmodel.dart';
 
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_)=>RecipeViewmodel(),
       child: const MaterialApp(debugShowCheckedModeBanner: false,
-      home: Recipelist(),
+      home: recipesplash(),
       ),
     );
   }
